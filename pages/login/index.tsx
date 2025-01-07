@@ -10,7 +10,6 @@ const LoginPage = () => {
       {currentForm === "loginForm" ? <LoginForm /> : <RegisterForm />}
       <Header />
       <LoginForm />
-      <RegisterForm />
     </div>
   );
 };

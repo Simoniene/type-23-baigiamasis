@@ -5,10 +5,10 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import RegisterForm from "../RegisterForm/RegisterForm";
 
-const LoginForm = (props: any) => {
+const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [showRegister, setShowRegister] = useState(false); // Naujas state, kad kontroliuotume, kuri forma rodyti
   const router = useRouter();
 
   const onLogin = async () => {
@@ -23,33 +23,48 @@ const LoginForm = (props: any) => {
       );
       if (response.status === 200) {
         cookie.set("jwt_token", response.data.token);
-        router.push("/");
+        router.push("/"); // Nukreipia į pagrindinį puslapį
       }
       console.log(response);
     } catch (err) {
       console.log(err);
     }
   };
+
+  const handleSwitchToRegister = () => {
+    setShowRegister(true); // Kai paspaudžiate mygtuką, parodys registracijos formą
+  };
+
+  const handleSwitchToLogin = () => {
+    setShowRegister(false); // Grįžti į prisijungimo formą
+  };
+
   return (
     <>
-      <div className={styles.wrapper}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={onLogin}>Log In</button>
-      </div>
-      <button onClick={RegisterForm}>
-        Don`t have an account? Register here.
-      </button>
+      {showRegister ? (
+        // Jei rodyti registracijos formą
+        <RegisterForm onSwitchToLogin={handleSwitchToLogin} />
+      ) : (
+        // Jei rodyti prisijungimo formą
+        <div className={styles.wrapper}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button onClick={onLogin}>Log In</button>
+          <button onClick={handleSwitchToRegister}>
+            Don`t have an account? Register here.
+          </button>
+        </div>
+      )}
     </>
   );
 };
