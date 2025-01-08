@@ -15,7 +15,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchToLogin }) => {
 
   const router = useRouter();
 
-  // Registracijos funkcija
   const onRegister = async () => {
     try {
       const userData = {
@@ -24,12 +23,12 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchToLogin }) => {
         password: password,
       };
       const response = await axios.post(
-        "http://localhost:3000/register",
+        "http://localhost:3002/login",
         userData
-      ); // Naudokite "register" endpoint'ą
+      );
       if (response.status === 200) {
-        cookie.set("jwt_token", response.data.token); // Užfiksuokite tokeną į cookies
-        router.push("/"); // Nukreipkite į pagrindinį puslapį
+        cookie.set("jwt_token", response.data.token);
+        router.push("/");
       }
       console.log(response);
     } catch (err) {
@@ -40,6 +39,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchToLogin }) => {
   return (
     <>
       <div className={styles.wrapper}>
+        <h1>Register</h1>
         <input
           type="text"
           placeholder="Name"
@@ -59,10 +59,10 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchToLogin }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={onRegister}>Register</button>
+        <button onClick={onSwitchToLogin}>
+          Already have an account? Sign In
+        </button>
       </div>
-      <button onClick={onSwitchToLogin}>
-        Already have an account? Sign In
-      </button>
     </>
   );
 };

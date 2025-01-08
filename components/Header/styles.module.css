@@ -1,10 +1,102 @@
 .wrapper {
   height: 100px;
-  background-color: brown;
-  padding: 0 2rem;
+  /* background-color: grey; */
+  /* padding: 0 2rem; */
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0px;
+  border-bottom: 1px solid grey;
+  margin: 0 2rem;
 }
+
 .title {
   font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.title a {
+  text-decoration: none;
+  color: black;
+}
+
+.wrapper nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.wrapper nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.wrapper button {
+  all: unset;
+  cursor: pointer;
+  width: 2rem;
+
+  display: none;
+}
+
+.wrapper button img {
+  width: 100%;
+}
+.overlayOpen {
+  left: 0px !important;
+}
+
+.overlay {
+  position: fixed;
+  background-color: rgb(47, 52, 56);
+  height: calc(100vh - 80px);
+  width: 100%;
+  left: 1000px;
+  top: 80px;
+  transition: 1s;
+
+  display: none;
+}
+
+.desktopNav ul {
+  align-items: center;
+}
+.mobileNav ul {
+  flex-direction: column;
+  margin-top: 4rem;
+}
+.mobileNav ul li {
+  display: flex;
+  justify-content: center;
+}
+
+.mobileNav ul li a {
+  font-size: 1.2rem;
+}
+
+.logoutBtn {
+  display: inline-block !important;
+  width: 25px !important;
+}
+.logoutBtn img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    position: sticky;
+    top: 0px;
+  }
+
+  .wrapper button {
+    display: inline-block;
+  }
+  .desktopNav {
+    display: none;
+  }
+
+  .overlay {
+    display: inline-block;
+  }
 }
