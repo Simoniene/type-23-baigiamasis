@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./styles.module.css";
 import burgerBtn from "../../assets/img/burgerBtn.svg";
 import Link from "next/link";
-import logoutImg from "../../assets/img/logout.svg";
+import logoutImg from "../../assets/img/logout-svgrepo-com.svg";
 import cookie from "js-cookie";
 
 const Header = () => {
@@ -42,7 +42,7 @@ const Header = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
-        <Link href="/">Discussion maze</Link>
+        <Link href="/">To do app </Link>
       </div>
       <div />
       <nav className={styles.desktopNav}>{navbar}</nav>

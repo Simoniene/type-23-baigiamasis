@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import cookie from "js-cookie";
 import styles from "./styles.module.css";
-import axios from "axios";
 import { useRouter } from "next/router";
 import RegisterForm from "../RegisterForm/RegisterForm";
 import { AxiosError } from "axios";
+import { LoginUser } from "@/api/user";
+import axios from "axios";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -20,10 +21,8 @@ const LoginForm = () => {
         email: email,
         password: password,
       };
-      const response = await axios.post(
-        "http://localhost:3002/login",
-        userData
-      );
+      const response = await LoginUser(userData);
+
       if ((response.status = 200)) {
         setLoggingIn(false);
         setError(false);

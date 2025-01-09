@@ -53,7 +53,7 @@ const AnswerQuestionForm = ({ questionId }: { questionId: string }) => {
             onChange={(e) => setAnswer(e.target.value)}
           />
           <button onClick={onSubmitAnswer}>Submit Answer</button>
-          <button onClick={onDeleteAnswer}>Delete Question </button>
+          <button onClick={onDeleteAnswer}>Delete Answer </button>
         </div>
       ) : (
         <p>You need to be logged in to answer a question.</p>

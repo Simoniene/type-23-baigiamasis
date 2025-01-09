@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import axios from "axios";
 import cookie from "js-cookie";
 import { useRouter } from "next/router";
+import { LoginUser } from "@/api/user";
 
 interface RegisterFormProps {
   onSwitchToLogin: () => void;
@@ -22,10 +23,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchToLogin }) => {
         email: email,
         password: password,
       };
-      const response = await axios.post(
-        "http://localhost:3002/login",
-        userData
-      );
+      const response = await LoginUser(userData);
+
       if (response.status === 200) {
         cookie.set("jwt_token", response.data.token);
         router.push("/");
