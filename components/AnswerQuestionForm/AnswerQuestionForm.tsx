@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import cookie from "js-cookie";
 import styles from "./styles.module.css";
+import Card from "../Cards/Card";
 
 const AnswerQuestionForm = ({ questionId }: { questionId: string }) => {
   const [answer, setAnswer] = useState("");

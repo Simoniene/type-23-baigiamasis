@@ -1,5 +1,16 @@
 import axios from "axios";
 
+export const insertTask = async (token: string) => {
+  const headers = {
+    authorization: token || "",
+  };
+  const response = await axios.post(`${process.env.BASE_URL}/tasks`, {
+    headers,
+  });
+
+  return response;
+};
+
 export const getAllTasks = async (token: string) => {
   const headers = {
     authorization: token || "",

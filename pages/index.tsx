@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 import { getAllTasks } from "@/api/task";
 import { AxiosError } from "axios";
 import cookie from "js-cookie";
-import LoginForm from "@/components/LoginForm/LoginForm";
 import Header from "@/components/Header/Header";
-import RegisterForm from "@/components/RegisterForm/RegisterForm";
+import Footer from "@/components/Footer/Footer";
+import Card from "@/components/Cards/Card";
 
 const MainPage = () => {
   const router = useRouter();
@@ -39,7 +39,8 @@ const MainPage = () => {
   return (
     <div>
       <Header />
-      <LoginForm />
+      <Card tasks={tasks} />
+      <Footer />
     </div>
   );
 };

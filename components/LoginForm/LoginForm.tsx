@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import RegisterForm from "../RegisterForm/RegisterForm";
 import { AxiosError } from "axios";
 import { LoginUser } from "@/api/user";
-import axios from "axios";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +12,7 @@ const LoginForm = () => {
   const [isError, setError] = useState(false);
   const [isLoggingIn, setLoggingIn] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+
   const router = useRouter();
 
   const onLogin = async () => {
