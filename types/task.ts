@@ -1,7 +1,5 @@
-export type Task = {
+export type Question = {
   id: string;
   question: string;
-  name: string;
-  password: string;
-  status: boolean;
+  // status: boolean;
 };

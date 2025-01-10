@@ -4,18 +4,18 @@ import Card from "../Cards/Card";
 import styles from "./styles.module.css";
 
 type QuestionProps = {
-  tasks: Task[];
+  question: Task[];
 };
 
-const Tasks = ({ tasks }: QuestionProps) => {
+const Tasks = ({ question }: QuestionProps) => {
   return (
     <div className={styles.wrapper}>
-      {tasks.map((task) => {
+      {question.map((question) => {
         return (
           <Card
-            id={task.id}
-            key={task.id}
-            question={task.question}
+            id={question.id}
+            key={question.id}
+            question={question.question}
             // status={task.status}
           />
         );

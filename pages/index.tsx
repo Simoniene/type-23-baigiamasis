@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Task } from "@/types/task";
+import { Task } from "@/types/Tasks";
 import { useRouter } from "next/router";
 import { getAllTasks } from "@/api/task";
 import { AxiosError } from "axios";
@@ -7,7 +7,8 @@ import cookie from "js-cookie";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import Card from "@/components/Cards/Card";
-
+import axios from "axios";
+import Tasks from "@/components/Tasks/Tasks";
 const MainPage = () => {
   const router = useRouter();
 
@@ -33,13 +34,14 @@ const MainPage = () => {
   };
 
   const token = cookie.get("jwt_token");
+
   useEffect(() => {
     fetchTasks();
   }, []);
   return (
     <div>
       <Header />
-      <Card tasks={tasks} />
+      <Tasks question={tasks} />
       <Footer />
     </div>
   );
