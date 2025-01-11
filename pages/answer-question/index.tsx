@@ -5,8 +5,8 @@ import AnswerQuestionForm from "@/components/AnswerQuestionForm/AnswerQuestionFo
 const AnswerQuestionPage = () => {
   return (
     <div>
-      <Header />
       <h1>Answer</h1>
+      <Header />
       <AnswerQuestionForm />
       <Footer />
     </div>

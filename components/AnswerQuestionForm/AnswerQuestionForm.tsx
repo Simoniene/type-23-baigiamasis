@@ -20,19 +20,29 @@ const AnswerQuestionForm = ({ Answer }: AnswerQuestionFormProps) => {
   const onSubmitAnswer = async () => {
     if (!isAuthenticated) {
       console.log("You must be logged in to answer a question.");
+      router.push("/");
       return;
     }
 
     try {
       const response = await axios.post(
-        "http://localhost:3002/tasks",
-        { answer, questionId },
+        "http://localhost:3002//tasks/${id}",
+        { answer },
         {
           headers: {
             Authorization: `Bearer ${cookie.get("jwt_token")}`,
           },
         }
       );
+
+      // const response = await axios.get(
+      //   `http://localhost:3002/tasks/${id}`, // Use backticks for template literals
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${cookie.get("jwt_token")}`,
+      //     },
+      //   }
+      // );
 
       if (response.status === 200) {
         console.log("Your answer has been submitted!");

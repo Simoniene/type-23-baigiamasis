@@ -21,6 +21,7 @@ const Card = ({ id, question }: CardProps) => {
   return (
     <div className={styles.card}>
       <h1>Question</h1>
+      <span>{question}</span>
       {/* <>
           {status ? (
             <img src={completedImg.src} alt="completed mark" />
@@ -31,7 +32,6 @@ const Card = ({ id, question }: CardProps) => {
       <Link href={`/tasks/${id}`} passHref>
         <button>Answer</button>
       </Link>
-      <span>{question}</span>
     </div>
   );
 };

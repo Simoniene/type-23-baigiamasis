@@ -2,6 +2,7 @@ import React from "react";
 import { Task } from "@/types/task";
 import Card from "../Cards/Card";
 import styles from "./styles.module.css";
+import AnswerQuestionForm from "../AnswerQuestionForm/AnswerQuestionForm";
 
 type QuestionProps = {
   question: Task[];
