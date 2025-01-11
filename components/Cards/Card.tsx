@@ -21,7 +21,6 @@ const Card = ({ id, question }: CardProps) => {
   return (
     <div className={styles.card}>
       <h1>Question</h1>
-
       {/* <>
           {status ? (
             <img src={completedImg.src} alt="completed mark" />
