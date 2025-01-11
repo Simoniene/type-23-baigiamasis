@@ -1,24 +1,22 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
-import { useState } from "react";
 import { useRouter } from "next/router";
 import cookie from "js-cookie";
 import axios from "axios";
+import likeImg from "../../assets/img/like-svgrepo-com.svg";
+import dislikeImg from "../../assets/img/dislike-svgrepo-com (1).svg";
 
-type CardProps = {
+type AnswerCardProps = {
   id: string;
-  question: string;
+  answer: string;
 };
-const Card = ({ id, question }: CardProps) => {
-  const router = useRouter();
-
+const AnswerCard = ({ id, answer }: AnswerCardProps) => {
   const isAuthenticated = !!cookie.get("jwt_token");
 
-  const onDeleteQuestion = async () => {
+  const onDeleteAnswer = async () => {
     if (!isAuthenticated) {
       console.log("You need to be logged in to delete an answer.");
-      router.push("/");
       return;
     }
     try {
@@ -32,25 +30,29 @@ const Card = ({ id, question }: CardProps) => {
       );
 
       if (response.status === 200) {
-        console.log("Question deleted successfully!");
+        console.log("Answer deleted successfully!");
       }
     } catch (err) {
-      console.log("Error deleting question", err);
+      console.log("Error deleting answer", err);
     }
   };
 
   return (
     <div className={styles.card}>
-      <span>{question}</span>
-
-      <Link href={`/tasks/${id}`} passHref>
-        <button>Answer</button>
-      </Link>
+      <span>{answer}</span>
+      <>
+        <button>
+          <img src={likeImg.src} alt="like mark" />
+        </button>
+        <button>
+          <img src={dislikeImg.src} alt="dislike mark" />
+        </button>
+      </>
       <Link href={"/"} passHref>
-        <button onClick={onDeleteQuestion}>Delete Question </button>
+        <button onClick={onDeleteAnswer}>Delete</button>
       </Link>
     </div>
   );
 };
 
-export default Card;
+export default AnswerCard;

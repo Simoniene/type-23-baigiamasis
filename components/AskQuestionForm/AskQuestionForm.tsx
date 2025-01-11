@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import cookie from "js-cookie";
-import styles from "./styles.module.css";
 import { useRouter } from "next/router";
+import styles from "./styles.module.css";
+import Link from "next/link";
+
 const AskQuestionForm = () => {
   const [question, setQuestion] = useState("");
 
@@ -35,16 +37,6 @@ const AskQuestionForm = () => {
     }
   };
 
-  const onDeleteQuestion = () => {
-    if (!isAuthenticated) {
-      console.log("You need to be logged in to delete an question.");
-      router.push("/");
-      return;
-    }
-
-    console.log("Question deleted");
-  };
-
   return (
     <div>
       {isAuthenticated ? (
@@ -55,9 +47,9 @@ const AskQuestionForm = () => {
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
           />
-
-          <button onClick={onAskQuestion}>Submit Question</button>
-          <button onClick={onDeleteQuestion}>Delete Question </button>
+          <Link href={"/"} passHref>
+            <button onClick={onAskQuestion}>Submit Question</button>
+          </Link>
         </div>
       ) : (
         <p>You need to log in to ask a question.</p>

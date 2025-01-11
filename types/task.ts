@@ -1,5 +1,9 @@
 export type Question = {
   id: string;
   question: string;
-  // status: boolean;
+};
+
+export type Answer = {
+  id: string;
+  answer: string;
 };

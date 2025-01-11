@@ -1,33 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import cookie from "js-cookie";
 import styles from "./styles.module.css";
-import Card from "../Cards/Card";
 import { useRouter } from "next/router";
 
 type AnswerQuestionFormProps = {
-  questionId: string;
+  id: string;
   answer: string;
 };
 
-const AnswerQuestionForm = ({ Answer }: AnswerQuestionFormProps) => {
-  const [answer, setAnswer] = useState("");
+const AnswerQuestionForm = ({ id, answer }: AnswerQuestionFormProps) => {
+  const [answerText, setAnswerText] = useState(answer);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
-  const router = useRouter();
-
-  const isAuthenticated = !!cookie.get("jwt_token");
+  useEffect(() => {
+    const token = cookie.get("jwt_token");
+    setIsAuthenticated(!!token);
+  }, []);
 
   const onSubmitAnswer = async () => {
     if (!isAuthenticated) {
       console.log("You must be logged in to answer a question.");
-      router.push("/");
       return;
     }
 
     try {
       const response = await axios.post(
-        "http://localhost:3002//tasks/${id}",
-        { answer },
+        `http://localhost:3002/tasks/${id}`,
+        { answer: answerText },
         {
           headers: {
             Authorization: `Bearer ${cookie.get("jwt_token")}`,
@@ -35,48 +35,27 @@ const AnswerQuestionForm = ({ Answer }: AnswerQuestionFormProps) => {
         }
       );
 
-      // const response = await axios.get(
-      //   `http://localhost:3002/tasks/${id}`, // Use backticks for template literals
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${cookie.get("jwt_token")}`,
-      //     },
-      //   }
-      // );
-
       if (response.status === 200) {
         console.log("Your answer has been submitted!");
-        setAnswer("");
-        router.push("/");
+        setAnswerText("");
       }
     } catch (err) {
       console.log("Error submitting answer", err);
     }
   };
-  const onDeleteAnswer = () => {
-    if (!isAuthenticated) {
-      console.log("You need to be logged in to delete an answer.");
-      router.push("/");
-      return;
-    }
-
-    console.log("Answer deleted");
-    router.push("/");
-  };
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       {isAuthenticated ? (
-        <div className={styles.wrapper}>
+        <>
           <input
             type="text"
-            placeholder="Answer"
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
+            placeholder="Your Answer"
+            value={answerText}
+            onChange={(e) => setAnswerText(e.target.value)}
           />
           <button onClick={onSubmitAnswer}>Submit Answer</button>
-          <button onClick={onDeleteAnswer}>Delete Answer </button>
-        </div>
+        </>
       ) : (
         <p>You need to be logged in to answer a question.</p>
       )}
