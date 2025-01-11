@@ -15,30 +15,25 @@ const Card = ({ id, question }: CardProps) => {
   const [showAnswer, setShowAnswer] = useState(false); // Įdėjau `useState` viduje komponento
 
   const handleSwitchToAnswer = () => {
-    setShowAnswer(true); // Tai nustatys `showAnswer` į true, kai paspausite mygtuką
+    setShowAnswer(true);
   };
-  const handleSwitchToQuestion = () => {
-    setShowAnswer(false); // Tai nustatys `showAnswer` į true, kai paspausite mygtuką
-  };
+
   return (
-    <>
-      <div className={styles.card}>
-        <Link className={styles.link} href={`/tasks/${id}`}>
-          <h1>Question</h1>
-        </Link>
-        {/* <>
+    <div className={styles.card}>
+      <h1>Question</h1>
+
+      {/* <>
           {status ? (
             <img src={completedImg.src} alt="completed mark" />
           ) : (
             <img src={notCompletedImg.src} alt="not completed mark" />
           )}
         </> */}
-        <button onClick={handleSwitchToAnswer}>Answer</button>
-
-        <span>{question}</span>
-      </div>
-      <AnswerQuestionForm onSwitchToAnswer={handleSwitchToQuestion} />
-    </>
+      <Link href={`/tasks/${id}`} passHref>
+        <button>Answer</button>
+      </Link>
+      <span>{question}</span>
+    </div>
   );
 };
 

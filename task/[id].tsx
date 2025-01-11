@@ -1,14 +1,22 @@
-import AnswerQuestionForm from "../components/AnswerQuestionForm/AnswerQuestionForm";
-import Card from "@/components/Cards/Card";
-import Tasks from "@/components/Tasks/Tasks";
 import React from "react";
+import { useRouter } from "next/router";
+import AnswerQuestionForm from "../../components/AnswerQuestionForm/AnswerQuestionForm";
 
-const Answer = () => {
+const TaskPage = () => {
+  const router = useRouter();
+  const { id } = router.query; // Gauti `id` iš URL
+
+  if (!id) {
+    return <div>Loading...</div>; // Pateikiame įkėlimo būseną, jei id dar nėra
+  }
+
   return (
     <div>
-      <AnswerQuestionForm />
+      <h1>Task ID: {id}</h1>
+      <AnswerQuestionForm questionId={id as string} />{" "}
+      {/* Perdavimo questionId į komponentą */}
     </div>
   );
 };
 
-export default Answer;
+export default TaskPage;

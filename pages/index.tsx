@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Task } from "@/types/Tasks";
+import { Task } from "@/types/task";
 import { useRouter } from "next/router";
 import { getAllTasks } from "@/api/task";
 import { AxiosError } from "axios";
