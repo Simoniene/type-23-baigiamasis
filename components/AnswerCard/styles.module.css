@@ -16,6 +16,7 @@
 
 .card button {
   display: flex;
+  display: inline-block;
   background: none;
   padding: 0.4rem;
   width: 7rem;
@@ -28,7 +29,7 @@
 
 .likeBtn {
   display: inline-block !important;
-  width: 25px !important;
+  width: 30px !important;
 }
 .likeBtn img {
   width: 100%;
@@ -36,7 +37,7 @@
 
 .dislikeBtn {
   display: inline-block !important;
-  width: 25px !important;
+  width: 30px !important;
 }
 .dislikeBtn img {
   width: 100%;
@@ -44,4 +45,9 @@
 
 .card button:hover {
   scale: 1.03;
+}
+
+.answerBtn {
+  display: flex;
+  gap: 1rem;
 }

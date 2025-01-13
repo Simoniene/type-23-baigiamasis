@@ -6,8 +6,8 @@ import AnswerCard from "@/components/AnswerCard/AnswerCard";
 const AnswerQuestionPage = () => {
   return (
     <div>
-      <h1>Answer</h1>
       <Header />
+      <h1>Answer</h1>
       <AnswerCard />
       <AnswerQuestionForm />
       <Footer />

@@ -19,6 +19,8 @@
 
 .questionBtn {
   display: flex;
+  justify-content: center;
+  width: 100%;
   transition: 0.3s;
 }
 
