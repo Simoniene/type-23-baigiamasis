@@ -3,3 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  background-image: url(https://cssdeck.com/blog/wp-content/uploads/2022/04/image-background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-width: 400px;
+}

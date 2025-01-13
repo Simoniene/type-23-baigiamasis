@@ -48,7 +48,9 @@ const AskQuestionForm = () => {
             onChange={(e) => setQuestion(e.target.value)}
           />
           <Link href={"/"} passHref>
-            <button onClick={onAskQuestion}>Submit Question</button>
+            <button onClick={onAskQuestion} className={styles.questionBtn}>
+              Submit Question
+            </button>
           </Link>
         </div>
       ) : (

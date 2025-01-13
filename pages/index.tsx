@@ -6,8 +6,6 @@ import { AxiosError } from "axios";
 import cookie from "js-cookie";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import Card from "@/components/Cards/Card";
-import axios from "axios";
 import Tasks from "@/components/Tasks/Tasks";
 const MainPage = () => {
   const router = useRouter();

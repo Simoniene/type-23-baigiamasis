@@ -40,17 +40,30 @@ const AnswerCard = ({ id, answer }: AnswerCardProps) => {
   return (
     <div className={styles.card}>
       <span>{answer}</span>
-      <>
-        <button>
-          <img src={likeImg.src} alt="like mark" />
-        </button>
-        <button>
-          <img src={dislikeImg.src} alt="dislike mark" />
-        </button>
-      </>
-      <Link href={"/"} passHref>
-        <button onClick={onDeleteAnswer}>Delete</button>
-      </Link>
+      <div className={styles.answerBtn}>
+        <>
+          <button
+            onClick={() => {
+              likeImg;
+            }}
+            className={styles.likeBtn}
+          >
+            <img src={likeImg.src} alt="like mark" />
+          </button>
+
+          <button
+            onClick={() => {
+              dislikeImg;
+            }}
+            className={styles.dislikeBtn}
+          >
+            <img src={dislikeImg.src} alt="dislike mark" />
+          </button>
+        </>
+        <Link href={"/"} passHref>
+          <button onClick={onDeleteAnswer}>Delete</button>
+        </Link>
+      </div>
     </div>
   );
 };

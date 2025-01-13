@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
-import { useState } from "react";
 import { useRouter } from "next/router";
 import cookie from "js-cookie";
 import axios from "axios";
@@ -33,6 +32,7 @@ const Card = ({ id, question }: CardProps) => {
 
       if (response.status === 200) {
         console.log("Question deleted successfully!");
+        router.push("/");
       }
     } catch (err) {
       console.log("Error deleting question", err);
@@ -42,13 +42,14 @@ const Card = ({ id, question }: CardProps) => {
   return (
     <div className={styles.card}>
       <span>{question}</span>
-
-      <Link href={`/tasks/${id}`} passHref>
-        <button>Answer</button>
-      </Link>
-      <Link href={"/"} passHref>
-        <button onClick={onDeleteQuestion}>Delete Question </button>
-      </Link>
+      <div className={styles.cardBtn}>
+        <Link href={`/tasks/${id}`} passHref>
+          <button className={styles.answerBtn}>Answer</button>
+        </Link>
+        <Link href={"/"} passHref>
+          <button onClick={onDeleteQuestion}>Delete Question</button>
+        </Link>
+      </div>
     </div>
   );
 };
