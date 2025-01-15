@@ -1,15 +1,15 @@
 import Header from "@/components/Header/Header";
-import LoginForm from "@/components/LoginForm/LoginForm";
 import Footer from "@/components/Footer/Footer";
+import RegisterForm from "@/components/RegisterForm/RegisterForm";
 
-const LoginPage = () => {
+const SigninPage = () => {
   return (
     <div>
       <Header />
-      <LoginForm />
+      <RegisterForm />
       <Footer />
     </div>
   );
 };
 
-export default LoginPage;
+export default SigninPage;

@@ -26,7 +26,7 @@ const AnswerQuestionForm = ({ id, answer }: AnswerQuestionFormProps) => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3002/tasks/${id}`,
+        `http://localhost:3002/answers/${id}`,
         { answer: answerText },
         {
           headers: {
@@ -37,7 +37,7 @@ const AnswerQuestionForm = ({ id, answer }: AnswerQuestionFormProps) => {
 
       if (response.status === 200) {
         console.log("Your answer has been submitted!");
-        setAnswerText("");
+        setAnswerText("aaaa");
       }
     } catch (err) {
       console.log("Error submitting answer", err);

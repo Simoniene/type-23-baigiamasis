@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Task } from "@/types/task";
+import { Question } from "@/types/question";
 import { useRouter } from "next/router";
-import { getAllTasks } from "@/api/task";
+import { getAllQuestions } from "@/api/question";
 import { AxiosError } from "axios";
 import cookie from "js-cookie";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import Tasks from "@/components/Tasks/Tasks";
+import Tasks from "@/components/Tasks/Question";
+
 const MainPage = () => {
   const router = useRouter();
 
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Question[]>([]);
 
   const fetchTasks = async () => {
     const token = cookie.get("jwt_token");
     try {
-      const response = await getAllTasks(token as string);
+      const response = await getAllQuestions(token as string);
 
       setTasks(response.data.tasks);
 
@@ -39,7 +40,7 @@ const MainPage = () => {
   return (
     <div>
       <Header />
-      <Tasks question={tasks} />
+      <Tasks questions={tasks} />
       <Footer />
     </div>
   );

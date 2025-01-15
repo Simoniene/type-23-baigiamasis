@@ -9,7 +9,7 @@ const TaskForm = () => {
 
   const router = useRouter();
 
-  const insertTask = async () => {
+  const LOGIN = async () => {
     try {
       const headers = {
         authorization: cookie.get("jwt_token"),
@@ -19,7 +19,7 @@ const TaskForm = () => {
         question: question,
       };
 
-      const response = await axios.post(`http://localhost:3002/tasks`, body, {
+      const response = await axios.post(`http://localhost:3002/login`, body, {
         headers,
       });
 
@@ -43,7 +43,7 @@ const TaskForm = () => {
           onChange={(e) => setQuestion(e.target.value)}
           type="text"
         />
-        <button onClick={insertTask}>Log In</button>
+        <button onClick={LOGIN}>Log In</button>
       </div>
     </div>
   );

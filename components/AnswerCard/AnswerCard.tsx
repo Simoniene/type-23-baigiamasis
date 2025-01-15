@@ -21,7 +21,8 @@ const AnswerCard = ({ id, answer }: AnswerCardProps) => {
     }
     try {
       const response = await axios.delete(
-        `${process.env.BASE_URL}/tasks/${id}`,
+        `${process.env.BASE_URL}/answers/${id}`,
+
         {
           headers: {
             Authorization: `Bearer ${cookie.get("jwt_token")}`,
