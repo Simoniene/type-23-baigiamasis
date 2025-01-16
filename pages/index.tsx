@@ -6,19 +6,20 @@ import { AxiosError } from "axios";
 import cookie from "js-cookie";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import Tasks from "@/components/Tasks/Question";
+// import Tasks from "@/components/Tasks/Question";
+import QuestionCard from "@/components/QuestionCards/QuestionCard";
 
 const MainPage = () => {
   const router = useRouter();
 
-  const [tasks, setTasks] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<Question[]>([]);
 
-  const fetchTasks = async () => {
+  const fetchQuestions = async () => {
     const token = cookie.get("jwt_token");
     try {
       const response = await getAllQuestions(token as string);
 
-      setTasks(response.data.tasks);
+      setQuestions(response.data.tasks);
 
       console.log(response);
     } catch (err: unknown) {
@@ -32,15 +33,13 @@ const MainPage = () => {
     }
   };
 
-  const token = cookie.get("jwt_token");
-
   useEffect(() => {
-    fetchTasks();
+    fetchQuestions();
   }, []);
   return (
     <div>
       <Header />
-      <Tasks questions={tasks} />
+      <QuestionCard id="" question="" />
       <Footer />
     </div>
   );

@@ -23,7 +23,7 @@ const LoginForm = () => {
       };
       const response = await LoginUser(userData);
 
-      if ((response.status = 200)) {
+      if (response.status === 200) {
         setLoggingIn(false);
         setError(false);
         cookie.set("jwt_token", response.data.token);

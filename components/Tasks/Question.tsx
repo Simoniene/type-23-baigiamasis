@@ -1,6 +1,6 @@
 import React from "react";
 import { Question } from "@/types/question";
-import Card from "../QuestionCards/QuestionCard";
+import QuestionCard from "../QuestionCards/QuestionCard";
 import styles from "./styles.module.css";
 
 type QuestionProps = {
@@ -10,12 +10,12 @@ type QuestionProps = {
 const Questions = ({ questions = [] }: QuestionProps) => {
   return (
     <div className={styles.wrapper}>
-      {questions.map((singleQuestion) => {
+      {questions.map((question) => {
         return (
-          <Card
-            id={singleQuestion.id}
-            key={singleQuestion.id}
-            question={singleQuestion.question}
+          <QuestionCard
+            id={question.id}
+            key={question.id}
+            question={question.question}
           />
         );
       })}

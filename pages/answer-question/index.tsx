@@ -8,8 +8,8 @@ const AnswerQuestionPage = () => {
     <div>
       <Header />
       <h1>Answer</h1>
-      <AnswerCard />
-      <AnswerQuestionForm />
+      <AnswerCard id="unique-answer-id" answer="This is a sample answer" />
+      <AnswerQuestionForm id="some-question-id" answer="Existing answer text" />
       <Footer />
     </div>
   );
